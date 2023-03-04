@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ReviewList from "./ReviewList";
 import { getReviews } from "../api";
 import ReviewForm from "./ReviewForm";
-import FileInput from "./FileInput";
 
 const LIMIT = 6;
 
