@@ -1,3 +1,22 @@
 .App .App-button {
   margin: 6px;
 }
+
+.Btn {
+  text-align: center;
+  margin: 50px;
+}
+
+.Board {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+}
+
+.Board > div {
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 50px;
+  text-align: center;
+}

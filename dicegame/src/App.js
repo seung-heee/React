@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="Btn">
         <Button className="App-button" color="blue" onClick={handleRollClick}>
           던지기
         </Button>
@@ -40,9 +40,13 @@ function App() {
         </Button>
       </div>
 
-      <div>
-        <Board name="나" color="blue" gameHistory={myHistory} />
-        <Board name="상대" color="red" gameHistory={otherHistory} />
+      <div className="Board">
+        <div>
+          <Board name="나" color="blue" gameHistory={myHistory} />
+        </div>
+        <div>
+          <Board name="상대" color="red" gameHistory={otherHistory} />
+        </div>
       </div>
     </div>
   );
