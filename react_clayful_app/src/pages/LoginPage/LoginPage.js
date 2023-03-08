@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import clayful from "clayful/client-js";
+import { AuthContext } from "../../context/AuthContext";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAuthenticated } = useContext(AuthContext);
 
   // 이메일 입력 시
   const handleEmailChange = (event) => {
@@ -28,22 +30,22 @@ function LoginPage() {
       password,
     };
 
-    // 로그인, authenticate
+    // payload로 사용자의 email, pw 넘겨주고
     Customer.authenticate(payload, function (err, result) {
       if (err) {
+        // 에러면
         console.log(err.code);
-        return;
+        return; // 콘솔 출력 후 리턴
       }
 
-      var data = result.data;
-
-      // 로컬스토리지에 customer과 token 저장
-      localStorage.setItem("customerUid", data.Customer);
-      localStorage.setItem("accessToken", data.token);
-
-      console.log(data);
+      // 로컬스토리지에 customer과 token 저장 / 로그인 성공 시
+      localStorage.setItem("customerUid", result.data.Customer);
+      localStorage.setItem("accessToken", result.data.token);
+      localStorage.setItem("expiresIn", result.data.expiresIn);
+      console.log(result.data);
 
       navigate("/");
+      isAuthenticated();
     });
   };
 
@@ -74,7 +76,7 @@ function LoginPage() {
         </p>
 
         <button type="submit">로그인</button>
-        <Link to="register" style={{ color: "gray", textDecoration: "none" }}>
+        <Link to="/register" style={{ color: "gray", textDecoration: "none" }}>
           {" "}
           Apple ID가 없으신가요? 지금 생성!
         </Link>
