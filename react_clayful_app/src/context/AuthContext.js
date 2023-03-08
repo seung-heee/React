@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import clayful from "clayful/client-js";
 import { useNavigate } from "react-router-dom";
+import Headers from "../components/Headers";
 
 export const AuthContext = createContext();
 
@@ -24,7 +25,7 @@ const AuthContextProvider = ({ children }) => {
         return;
       }
 
-      var headers = result.headers;
+      var Headers = result.headers;
       var data = result.data;
 
       if (data.authenticated) {

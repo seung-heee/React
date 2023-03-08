@@ -6,10 +6,13 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AuthContextProvider from "./context/AuthContext";
+import Headers from "./components/Headers";
 
 function App() {
   return (
     <AuthContextProvider>
+      <Headers />
+
       {/* children */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
