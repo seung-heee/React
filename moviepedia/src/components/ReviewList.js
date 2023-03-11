@@ -1,4 +1,5 @@
 import "./ReviewList.css";
+import Rating from "./Rating";
 
 // createAt을 년,월,일 날짜로 보기 좋게 만듦
 function fotmatDate(value) {
@@ -15,7 +16,7 @@ function ReviewListItem({ item, onDelete }) {
       <img className="ReviewListItem-img" src={item.imgUrl} alt={item.title} />
       <div>
         <h1>{item.title}</h1>
-        <p>{item.rating}</p>
+        <Rating value={item.rating} />
         <p>{fotmatDate(item.createdAt)}</p>
         <p>{item.content}</p>
         <button onClick={handleDeleteClick}>삭제</button>

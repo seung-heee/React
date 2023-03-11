@@ -1,6 +1,7 @@
 import "./ReviewForm.css";
 import { useState } from "react";
 import FileInput from "./FileInput";
+import RatingInput from "./RatingInput";
 
 function ReviewForm() {
   // 하나의 state로 관리
@@ -42,12 +43,11 @@ function ReviewForm() {
         value={values.title}
         onChange={handleInputChange}
       ></input>
-      <input
-        type="number"
+      <RatingInput
         name="rating"
         value={values.rating}
-        onChange={handleInputChange}
-      ></input>
+        onChange={handleChange}
+      ></RatingInput>
       <textarea
         name="content"
         value={values.content}
