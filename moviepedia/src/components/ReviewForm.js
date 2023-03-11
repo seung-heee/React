@@ -1,46 +1,62 @@
 import "./ReviewForm.css";
 import { useState } from "react";
+import FileInput from "./FileInput";
 
 function ReviewForm() {
-  const [title, setTitle] = useState("");
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState("");
+  // 하나의 state로 관리
+  const [values, setValues] = useState({
+    title: "",
+    rating: 0,
+    content: "",
+    imgFile: null,
+  });
 
-  // 이벤트 핸들러
-  // 제목
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleChange = (name, value) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
-  // 평점
-  const handleRatingChange = (e) => {
-    const nextRating = Number(e.target.value) || 0;
-    setRating(nextRating);
+  // 하나의 핸들러로 관리
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
   };
-  // 내용
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      title,
-      rating,
-      content,
-    });
+    console.log(values);
   };
 
   return (
     // state값과 input값 동일하게
     <form className="ReviewForm" onSubmit={handleSubmit}>
-      <input value={title} onChange={handleTitleChange}></input>
-      <input type="number" value={rating} onChange={handleRatingChange}></input>
-      <textarea value={content} onChange={handleContentChange}></textarea>
+      <FileInput
+        name="imgFile"
+        value={values.imgFile}
+        onChange={handleChange}
+      />
+      <input
+        name="title"
+        value={values.title}
+        onChange={handleInputChange}
+      ></input>
+      <input
+        type="number"
+        name="rating"
+        value={values.rating}
+        onChange={handleInputChange}
+      ></input>
+      <textarea
+        name="content"
+        value={values.content}
+        onChange={handleInputChange}
+      ></textarea>
       <button type="submit">확인</button>
     </form>
   );
 }
-
 export default ReviewForm;
 
 // input - value에 state넣고 핸들러를 이용해 value(State) 변경시 setState로 상태 변경
