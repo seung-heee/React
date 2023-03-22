@@ -34,7 +34,7 @@ function ReviewList({ items, onDelete }) {
           // 고유한 key 지정
           <li key={item.id}>
             <ReviewListItem item={item} onDelete={onDelete} />
-            <input value={item.title}></input>
+            <input></input>
           </li>
         );
       })}

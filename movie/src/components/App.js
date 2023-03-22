@@ -1,9 +1,9 @@
 import ReviewList from "./ReviewList";
-import mockitems from "../mock.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getReviews } from "../api";
 
 function App() {
-  const [items, setItems] = useState(mockitems);
+  const [items, setItems] = useState([]);
   const [order, setorder] = useState("createdAt"); // 정렬 state
   const sortedItems = items.sort((a, b) => b[order] - a[order]); // order에 따라 정렬기준 달라짐
 
@@ -15,6 +15,17 @@ function App() {
     const nextItems = items.filter((item) => item.id !== id);
     setItems(nextItems);
   };
+
+  const handleLoad = async (orderQuery) => {
+    // 데이터 받아옴
+    const { reviews } = await getReviews(orderQuery);
+    setItems(reviews);
+  };
+
+  // 초기데이터 불러옴
+  useEffect(() => {
+    handleLoad(order); // 처음 렌더링된 후 콜백함수 실행
+  }, [order]); // order 값이 바뀔 때, 재렌더링
 
   return (
     <div>
