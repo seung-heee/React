@@ -1,4 +1,5 @@
 import "./ReviewList.css";
+import Rating from "./Rating";
 
 // 숫자 형식인 createdAt을 날짜 형식으로 변경
 function formatDate(value) {
@@ -15,7 +16,7 @@ function ReviewListItem({ item, onDelete }) {
       <img className="ReviewListItem-img" src={item.imgUrl} alt={item.title} />
       <div>
         <h1>{item.title}</h1>
-        <p>{item.rating}</p>
+        <Rating value={item.rating} />
         <p>{formatDate(item.createdAt)}</p>
         <p>{item.content}</p>
         <button onClick={handleDeleteClick}>삭제</button>
@@ -34,7 +35,6 @@ function ReviewList({ items, onDelete }) {
           // 고유한 key 지정
           <li key={item.id}>
             <ReviewListItem item={item} onDelete={onDelete} />
-            <input></input>
           </li>
         );
       })}
