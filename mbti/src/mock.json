@@ -1,0 +1,30 @@
+[{
+        "colorCode": "#33A560",
+        "createdAt": 1673250909000,
+        "updatedAt": 1673250909000,
+        "id": 40,
+        "mbti": "ESFJ"
+    },
+    {
+        "colorCode": "#F011E5",
+        "createdAt": 1673250909000,
+        "updatedAt": 1673250909000,
+        "id": 39,
+        "mbti": "ISTP"
+    },
+    {
+        "colorCode": "#771880",
+        "createdAt": 1673250909000,
+        "updatedAt": 1673250909000,
+        "id": 38,
+        "mbti": "INFJ"
+    },
+
+    {
+        "colorCode": "#5F6600",
+        "createdAt": 1673250909000,
+        "updatedAt": 1673250909000,
+        "id": 1,
+        "mbti": "INFJ"
+    }
+]
