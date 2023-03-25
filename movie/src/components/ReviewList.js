@@ -2,6 +2,7 @@ import "./ReviewList.css";
 import Rating from "./Rating";
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
+import useTranslate from "../hooks/useTranslate";
 
 // 숫자 형식인 createdAt을 날짜 형식으로 변경
 function formatDate(value) {
@@ -11,6 +12,8 @@ function formatDate(value) {
 
 // 각 영화 1개 정보
 function ReviewListItem({ item, onDelete, onEdit }) {
+  const t = useTranslate();
+
   const handleDeleteClick = () => onDelete(item.id);
   const handleEditCliCk = () => {
     onEdit(item.id);
@@ -24,8 +27,8 @@ function ReviewListItem({ item, onDelete, onEdit }) {
         <Rating value={item.rating} />
         <p>{formatDate(item.createdAt)}</p>
         <p>{item.content}</p>
-        <button onClick={handleDeleteClick}>삭제</button>
-        <button onClick={handleEditCliCk}>수정</button>
+        <button onClick={handleEditCliCk}>{t('edit button')}</button>
+        <button onClick={handleDeleteClick}>{t('delete button')}</button>
       </div>
     </div>
   );

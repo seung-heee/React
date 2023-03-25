@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import './FileInput.css'
 
 function FileInput({ name, value, initialPreview, onChange }) {
   const [preview, setPreview] = useState(initialPreview);
